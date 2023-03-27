@@ -1,7 +1,10 @@
+
+
 <?php
-ob_start();
 include "header.php";
-if (is_array($_COOKIE['item']))  
+session_start();
+
+if (is_array($_COOKIE['item']))  //this is for chec cookies are available or nor
 {
     foreach ($_COOKIE['item'] as $name1 => $value)
     {
@@ -18,6 +21,7 @@ if (is_array($_COOKIE['item']))
         }
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +30,7 @@ if (is_array($_COOKIE['item']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cart | TastyFood</title>
+    <title>Cart | E-Shopper</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -61,20 +65,18 @@ if (is_array($_COOKIE['item']))
       <form name="form1" action="" method="post">
         <?php
                     $d = 0;
-                    if (is_array($_COOKIE['item']))  
+                    if (is_array($_COOKIE['item']))  //this is for check cookies are available or nor
                     {
                         $d = $d + 1;
 
                     }
                     if ($d == 0)
                     {
-                        ?>
-						<center><h3>Looks like you have not added anything in cart</h3></center>
-						</br>
-						</br>
-						</br>
-						</br>
-						<?php
+                        echo "no record available in cart";
+                        echo "<br>";
+                        echo "<br>";
+                        echo "<br>";
+                        echo "<br>";
                     }
                     else
                     {
@@ -91,7 +93,7 @@ if (is_array($_COOKIE['item']))
         </thead>
         <tbody>
           <?php
-                    foreach ($_COOKIE['item'] as $name1 => $value)   
+                    foreach ($_COOKIE['item'] as $name1 => $value)   //this is for looping as per cookies if 3 cookies then loop move
                     {
                         $values11 = explode("__", $value);
 
@@ -114,53 +116,36 @@ if (is_array($_COOKIE['item']))
                     }
 
                     ?>
-				<tr class="cart_menu"> 
-            <td class="image">Grand Total</td>
-            <td class="description"></td>
-            <td class="price"></td>
-            <td class="quantity"></td>
-			<?php
+        </tbody>
+      </form>
+    </table>
+    <?php
 
-            
+            }
             $tot = 0;
 
-            if (is_array($_COOKIE['item']))  
+            if (is_array($_COOKIE['item']))  //this is for chec cookies are available or nor
             {
-                foreach ($_COOKIE['item'] as $name1 => $value)   
+                foreach ($_COOKIE['item'] as $name1 => $value)   //this is for looping as per cookies if 3 cookies then loop move
                 {
                     $values11 = explode("__", $value);
                     $tot = $tot + $values11[4];
                 }
 
-                
+                echo "Total = BDT " . $tot;
                 $_SESSION["pay"] = $tot;
             }
             ?>
-            <td class="total"><?php echo "= BDT " . $tot; ?></td>
-            <td></td>
-          </tr>	
-        </tbody>
-      </form>
-    </table>
-    
   </div>
-				
 </div>
 </section> 
 <!--/#cart_items-->
 <center>
-  <a href="booking.php"> 
-  <input type="button" value="Book a table!" style="padding:10px; background-color:#9ACD32; color:white; font-weight:bold">
-  </a> 
-</center>
-<br>
-<center>
   <a href="checkout.php"> 
-  <input type="button" value="Home delivery!" style="padding:10px; background-color:#9ACD32; color:white; font-weight:bold">
+  <input type="button" value="checkout">
   </a> 
 </center>
 <?php
-}
 include "footer.php";
 ?>
 </body>

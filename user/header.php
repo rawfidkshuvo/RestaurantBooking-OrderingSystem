@@ -1,12 +1,3 @@
-<?php
-error_reporting(0);
-session_start();
-$link1 = mysqli_connect("localhost", "root", "");
-mysqli_select_db($link1, "burger_shop");
-$xid=$_SESSION["userid"];
-$rin=mysqli_query($link1,"select * from checkout_address where id=$xid");
-$pin=mysqli_fetch_array($rin);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +5,7 @@ $pin=mysqli_fetch_array($rin);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>TASTY-FOOD</title>
+    <title>BURGER-Shop</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -44,7 +35,7 @@ $pin=mysqli_fetch_array($rin);
         <div class="contactinfo"> 
           <ul class="nav nav-pills">
             <li><a href=""><i class="fa fa-phone"></i> +880 1677 213 280</a></li>
-            <li><a href=""><i class="fa fa-envelope"></i> tastyfood83@gmail.com</a></li>
+            <li><a href=""><i class="fa fa-envelope"></i> kabir15-4850@diu.edu.bd</a></li>
           </ul>
         </div>
       </div>
@@ -68,7 +59,7 @@ $pin=mysqli_fetch_array($rin);
   <div class="container"> 
     <div class="row"> 
       <div class="col-sm-4"> 
-        <div class="logo pull-left"> <a href="shop.php"><img src="images/home/dine.png" alt="" height=100 width=150 /></a> 
+        <div class="logo pull-left"> <a href="shop.php"><img src="images/home/logo.jpg" alt="" height=100 width=400 /></a> 
         </div>
         <div class="btn-group pull-right"> 
           <div class="btn-group"> </ul> </div>
@@ -78,33 +69,10 @@ $pin=mysqli_fetch_array($rin);
       <div class="col-sm-8"> 
         <div class="shop-menu pull-right"> 
           <ul class="nav navbar-nav">
-            
-			<li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-			
-			<?php
-
-			if($_SESSION["userid"]=="")
-			{ ?>
-			<li><a href="login.php"><i class="fa fa-lock"></i> Login</a></li>
-			<?php
-			}
-			else
-			{
-			?>
-			<li><a href="cart.php"><i class="fa fa-user"></i> HI, <?php echo $pin["firstname"];?></a></li>
-			<li><a href="logout.php">(Logout)</a></li>
-			<?php } ?>
-			</br>
-			</br>
-			</br>
-			<form name="form1" action="search.php" method="post" style="text-align: right" >
-                <input type="text" name="firstname" placeholder="Search food" style=" background-color: #FFA500"/>
-                <input type="submit" name="submit1" value="SEARCH" style="background-color:#9ACD32; color:white; font-weight:bold">
-            </form>
+            <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> Cart</a></li>
           </ul>
         </div>
       </div>
-	  
     </div>
   </div>
 </div>
